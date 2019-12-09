@@ -9,8 +9,10 @@ Changelog:
 
 v1.0
 - Initial release
-- Drop support TLSv1 TLSv1.1
-- Add support TLSv1.3 (TLSv1.2 TLSv1.3)
+- Drop support TLS 1.0 TLS 1.1
+
+read more https://blog.qualys.com/ssllabs/2018/11/19/grade-change-for-tls-1-0-and-tls-1-1-protocols
+- Add support TLS 1.3 (TLS 1.2 TLS 1.3)
 
 ### Requirement
 ```bash
