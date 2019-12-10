@@ -7,7 +7,7 @@ https://github.com/rehmatworks/runcloud-letsencrypt
 
 Changelog:
 
-v1.0
+v1.0.0
 - Initial release
 - Drop support TLS 1.0 TLS 1.1
 
