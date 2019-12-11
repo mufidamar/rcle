@@ -3,6 +3,9 @@ Install Let's Encrypt SSL on RunCloud.io servers
 
 ### Changelog:
 
+v1.0.1
+- Other improvements
+
 v1.0.0
 - Initial release
 - Drop support TLS 1.0 TLS 1.1 [*read more*](https://blog.qualys.com/ssllabs/2018/11/19/grade-change-for-tls-1-0-and-tls-1-1-protocols "read more")
