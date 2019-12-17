@@ -77,7 +77,7 @@ def write_vhost(appinfo):
 	c = nginx.Conf()
 	s = nginx.Server()
 	s.add(
-		nginx.Comment('SSL conf added by rcle (https://github.com/rehmatworks/runcloud-letsencrypt)'),
+		nginx.Comment('SSL conf added by rcle (https://github.com/mufidamar/rcle)'),
 		nginx.Key('listen', '443 ssl http2'),
 		nginx.Key('listen', '[::]:443 ssl http2'),
 		nginx.Key('server_name', ' '.join(appinfo.get('valid_domains'))),
