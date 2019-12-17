@@ -3,6 +3,9 @@ Install Let's Encrypt SSL on RunCloud.io servers
 
 ### Changelog:
 
+v1.1.1
+- Minor fixes
+
 v1.1.0
 - Other improvements
 
