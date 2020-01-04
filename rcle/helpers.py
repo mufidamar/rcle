@@ -93,6 +93,7 @@ def write_vhost(appinfo):
 		nginx.Key('ssl_prefer_server_ciphers', 'on'),
 		nginx.Key('ssl_session_timeout', '5m'),
 		nginx.Key('ssl_protocols', 'TLSv1.2 TLSv1.3'),
+		nginx.Key('ssl_early_data', 'on'),
 		nginx.Key('ssl_stapling', 'on'),
 		nginx.Key('ssl_stapling_verify', 'on'),
 		nginx.Key('resolver', '8.8.8.8 8.8.4.4 valid=86400s'),
