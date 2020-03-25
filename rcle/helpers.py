@@ -77,7 +77,7 @@ def write_vhost(appinfo):
 	c = nginx.Conf()
 	s = nginx.Server()
 	s.add(
-		nginx.Comment('SSL conf added by rcle (https://github.com/mufidamar/rcle)'),
+		nginx.Comment('SSL conf added by rcle (https://github.com/mufidamar/rcle/)'),
 		nginx.Key('listen', '443 ssl http2'),
 		nginx.Key('listen', '[::]:443 ssl http2'),
 		nginx.Key('server_name', ' '.join(appinfo.get('valid_domains'))),
@@ -90,17 +90,16 @@ def write_vhost(appinfo):
 		nginx.Key('ssl', 'on'),
 		nginx.Key('ssl_certificate', appinfo.get('cert_path')),
 		nginx.Key('ssl_certificate_key', appinfo.get('key_path')),
-		nginx.Key('ssl_prefer_server_ciphers', 'on'),
-		nginx.Key('ssl_session_timeout', '5m'),
-		nginx.Key('ssl_protocols', 'TLSv1.2 TLSv1.3'),
 		nginx.Key('ssl_early_data', 'on'),
-		nginx.Key('ssl_stapling', 'on'),
-		nginx.Key('ssl_stapling_verify', 'on'),
-		nginx.Key('resolver', '8.8.8.8 8.8.4.4 valid=86400s'),
-		nginx.Key('resolver_timeout', '5s'),
-		nginx.Key('ssl_ecdh_curve', 'secp384r1'),
+		nginx.Key('ssl_session_timeout', '5m'),
 		nginx.Key('ssl_session_cache', 'shared:SSL:10m'),
 		nginx.Key('ssl_session_tickets', 'off'),
+		nginx.Key('ssl_protocols', 'TLSv1.2 TLSv1.3'),
+		nginx.Key('ssl_prefer_server_ciphers', 'on'),
+		nginx.Key('add_header', 'Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"'),
+		nginx.Key('ssl_stapling', 'on'),
+		nginx.Key('ssl_stapling_verify', 'on'),
+		nginx.Key('resolver', '8.8.8.8 8.8.4.4'),
 		nginx.Key('ssl_dhparam', '/etc/nginx-rc/dhparam.pem'),
 		nginx.Key('include', '/etc/nginx-rc/conf.d/{}.d/main.conf'.format(appinfo.get('name')))
 	)
