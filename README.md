@@ -3,6 +3,10 @@ Install Let's Encrypt SSL on RunCloud.io servers
 
 ### Changelog:
 
+v1.1.5
+- Remove **always** parameter from HSTS response header
+- Brotli compression improvements
+
 v1.1.4
 - Performance improvements
 
@@ -23,11 +27,6 @@ v1.0.0
 - Initial release
 - Drop support TLS 1.0 TLS 1.1 [*read more*](https://blog.qualys.com/ssllabs/2018/11/19/grade-change-for-tls-1-0-and-tls-1-1-protocols "read more")
 - Add support TLS 1.3 (TLS 1.2 TLS 1.3)
-
-### Requirement
-```bash
-pip install wheel
-```
 
 ### Installation
 ```bash
@@ -83,4 +82,4 @@ rcle -u appname
 
 **rcle** made possible by the [rehmatworks](https://github.com/rehmatworks/runcloud-letsencrypt "rehmatworks") project.
 
-Made with :heart: in Magetan.
+Made with love in Magetan.
