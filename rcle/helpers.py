@@ -82,9 +82,9 @@ def write_vhost(appinfo):
 		nginx.Key('listen', '[::]:443 ssl http2'),
 		nginx.Key('server_name', ' '.join(appinfo.get('valid_domains'))),
 		nginx.Key('brotli', 'on'),
-		nginx.Key('brotli_comp_level', '4'),
-		nginx.Key('brotli_types', 'text/plain text/css application/javascript application/json image/svg+xml application/xml+rss'),
 		nginx.Key('brotli_static', 'on'),
+		nginx.Key('brotli_comp_level', '4'),
+		nginx.Key('brotli_types', 'application/atom+xml application/geo+json application/javascript application/json application/ld+json application/manifest+json application/rdf+xml application/rss+xml application/vnd.ms-fontobject application/wasm application/x-font-opentype application/x-font-truetype application/x-font-ttf application/x-javascript application/x-web-app-manifest+json application/xhtml+xml application/xml application/xml+rss font/eot font/opentype font/otf image/bmp image/svg+xml image/vnd.microsoft.icon image/x-icon image/x-win-bitmap text/cache-manifest text/calendar text/css text/javascript text/markdown text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy text/xml'),
 		nginx.Key('ssl', 'on'),
 		nginx.Key('ssl_certificate', appinfo.get('cert_path')),
 		nginx.Key('ssl_certificate_key', appinfo.get('key_path')),
@@ -97,7 +97,8 @@ def write_vhost(appinfo):
 		nginx.Key('add_header', 'Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"'),
 		nginx.Key('ssl_stapling', 'on'),
 		nginx.Key('ssl_stapling_verify', 'on'),
-		nginx.Key('resolver', '8.8.8.8 8.8.4.4'),
+		nginx.Key('resolver', '8.8.8.8 8.8.4.4 valid=86400s'),
+		nginx.Key('resolver_timeout', '5s'),
 		nginx.Key('ssl_dhparam', '/etc/nginx-rc/dhparam.pem'),
 		nginx.Key('include', '/etc/nginx-rc/conf.d/{}.d/main.conf'.format(appinfo.get('name')))
 	)
