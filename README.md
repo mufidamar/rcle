@@ -3,12 +3,13 @@ Install Let's Encrypt SSL on RunCloud.io servers
 
 ### Changelog:
 
-v1.1.6
-- Performance improvements
-
-v1.1.5
+v1.2.0
 - Remove **always** parameter from HSTS response header
 - Brotli compression improvements
+- Minor fixes
+
+v1.1.5
+- Minor fixes
 
 v1.1.4
 - Performance improvements
