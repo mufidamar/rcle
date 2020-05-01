@@ -82,9 +82,11 @@ def write_vhost(appinfo):
 		nginx.Key('listen', '[::]:443 ssl http2'),
 		nginx.Key('server_name', ' '.join(appinfo.get('valid_domains'))),
 		nginx.Key('brotli', 'on'),
-		nginx.Key('brotli_static', 'on'),
-		nginx.Key('brotli_comp_level', '4'),
-		nginx.Key('brotli_types', 'application/atom+xml application/geo+json application/javascript application/json application/ld+json application/manifest+json application/rdf+xml application/rss+xml application/vnd.ms-fontobject application/wasm application/x-font-opentype application/x-font-truetype application/x-font-ttf application/x-javascript application/x-web-app-manifest+json application/xhtml+xml application/xml application/xml+rss font/eot font/opentype font/otf image/bmp image/svg+xml image/vnd.microsoft.icon image/x-icon image/x-win-bitmap text/cache-manifest text/calendar text/css text/javascript text/markdown text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy text/xml'),
+		nginx.Key('brotli_static', 'off'),
+		nginx.Key('brotli_min_length', '100'),
+		nginx.Key('brotli_buffers', '16 8k'),
+		nginx.Key('brotli_comp_level', '5'),
+		nginx.Key('brotli_types', '*'),
 		nginx.Key('ssl', 'on'),
 		nginx.Key('ssl_certificate', appinfo.get('cert_path')),
 		nginx.Key('ssl_certificate_key', appinfo.get('key_path')),
@@ -94,12 +96,12 @@ def write_vhost(appinfo):
 		nginx.Key('ssl_session_tickets', 'off'),
 		nginx.Key('ssl_protocols', 'TLSv1.2 TLSv1.3'),
 		nginx.Key('ssl_prefer_server_ciphers', 'on'),
-		nginx.Key('add_header', 'Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"'),
 		nginx.Key('ssl_stapling', 'on'),
 		nginx.Key('ssl_stapling_verify', 'on'),
 		nginx.Key('resolver', '8.8.8.8 8.8.4.4 valid=86400s'),
 		nginx.Key('resolver_timeout', '5s'),
 		nginx.Key('ssl_dhparam', '/etc/nginx-rc/dhparam.pem'),
+		nginx.Key('add_header', 'Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"'),
 		nginx.Key('include', '/etc/nginx-rc/conf.d/{}.d/main.conf'.format(appinfo.get('name')))
 	)
 	c.add(s)
