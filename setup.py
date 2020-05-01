@@ -6,7 +6,7 @@ with open('README.md') as f:
 
 setup(
     name='rcle',
-	version='1.1.6',
+	version='1.2.0',
 	description='Install Let\'s Encrypt SSL on RunCloud servers the easy way.',
     long_description=long_description,
     long_description_content_type='text/markdown',
